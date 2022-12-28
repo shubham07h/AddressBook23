@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace AddressBookDay23
 {
-    internal class AddressBook
+    public class AddressBook
     {
         public string FirstName, LastName, Address, City, State, Email;
         public int Zip;
         public long PhoneNum;
+        public AddressBook[] ContactArray;
+        public int Contact = 0;
+        public AddressBook()
+        {
+            this.ContactArray = new AddressBook[5];
+        }
         public AddressBook(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNum)
         {
             FirstName = firstName;
@@ -23,15 +29,14 @@ namespace AddressBookDay23
             Zip = zip;
             PhoneNum = phoneNum;
         }
-        public void DisplayContacts()
+        public void CreateContact(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNum)
         {
-            Console.WriteLine("Name {0} {1}", FirstName, LastName);
-            Console.WriteLine("Address : {0}", Address);
-            Console.WriteLine("City :{0}", City);
-            Console.WriteLine("State : {0}", State);
-            Console.WriteLine("Email :{0}", Email);
-            Console.WriteLine("Zip :{0}", Zip);
-            Console.WriteLine("Phone :{0}", PhoneNum);
+            ContactArray[this.Contact] = new AddressBook(firstName, lastName, address, city, state, email, zip, phoneNum);
+            Contact++;
+            Program program = new Program();
+            program.DisplayContacts(ContactArray, Contact);
+
         }
+
     }
 }
