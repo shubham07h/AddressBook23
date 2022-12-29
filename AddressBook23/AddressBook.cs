@@ -16,15 +16,8 @@ namespace AddressBookDay23
 
         public void CreateContact(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNum, string BookName)
         {
-            Contact contact = new Contact();
-            contact.FirstName = firstName;
-            contact.LasTName = lastName;
-            contact.Address = address;
-            contact.City = city;
-            contact.State = state;
-            contact.Zip = zip;
-            contact.Email = email;
-            contact.PhoneNum = phoneNum;
+            Contact contact = new Contact(firstName, lastName, address, city, state, email, zip, phoneNum);
+
             addressBookDictionary[BookName].addressBook.Add(contact.FirstName, contact);
             Console.WriteLine("Added Succesfully");
 
@@ -142,6 +135,25 @@ namespace AddressBookDay23
         public Dictionary<string, AddressBook> GetaddressBook()
         {
             return addressBookDictionary;
+        }
+        public List<Contact> GetListOfDictionaryKeys(string bookName)
+        {
+            List<Contact> contacts = new List<Contact>();
+            foreach (var value in addressBookDictionary[bookName].addressBook.Values)
+            {
+                contacts.Add(value);
+            }
+            return contacts;
+        }
+        public bool CheckDuplicateEntry(Contact check, string bookName)
+        {
+            List<Contact> contacts = GetListOfDictionaryKeys(bookName);
+            if (contacts.Any(b => b.Equals(check)))
+            {
+                Console.WriteLine("Name Already Exist");
+                return true;
+            }
+            return false;
         }
 
 

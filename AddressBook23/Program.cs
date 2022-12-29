@@ -44,6 +44,11 @@ namespace AddressBookDay23
                         string FirstName = Console.ReadLine();
                         Console.WriteLine("Enter LastName");
                         string LastName = Console.ReadLine();
+                        Contact contact = new Contact(FirstName, LastName, null, null, null, null, 0, 0);
+                        if (add.CheckDuplicateEntry(contact, BookName))
+                        {
+                            break;
+                        }
                         Console.WriteLine("Enter Address");
                         string Address = Console.ReadLine();
                         Console.WriteLine("Enter City");
@@ -87,6 +92,25 @@ namespace AddressBookDay23
                         if (c == 1)
                         {
                             BookName = newaddressbook;
+                        }
+                        break;
+                    case 7:
+                        Console.WriteLine("Enter Name Of AddressBook From Below List");
+                        foreach (KeyValuePair<string, AddressBook> item in add.GetaddressBook())
+                        {
+                            Console.WriteLine(item.Key);
+                        }
+                        while (true)
+                        {
+                            BookName = Console.ReadLine();
+                            if (add.GetaddressBook().ContainsKey(BookName))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("No such AddressBook found. Try Again.");
+                            }
                         }
                         break;
                 }
