@@ -37,8 +37,7 @@ namespace AddressBookDay23
                 add.CreateContact(FirstName, LastName, Address, City, State, Email, Zip, PhoneNum);
                 Contact--;
             }
-            /*AddressBook ab = new AddressBook("Prajakta","hjdhjd","abs","Mumbai","Maharashtra", "pra23@gmail.com", 400023, 9632587412);
-            ab.DisplayContacts();*/
+            
         }
         public void DisplayContacts(AddressBook[] ContactArray, int n)
         {
