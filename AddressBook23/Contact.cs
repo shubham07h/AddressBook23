@@ -39,6 +39,11 @@ namespace AddressBookDay23
                 return FirstName.Equals(contact.FirstName) && LasTName.Equals(contact.LasTName);
             }
         }
+        public override string ToString()
+        {
+            return "FirstName : " + FirstName + "\nLast Name : " + LasTName + "\nCity: " + City +
+                "\nState :" + State + "\nZip :" + Zip + "\nEmail :" + Email + "\nPhone Number :" + PhoneNum;
+        }
 
 
     }
